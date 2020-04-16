@@ -41,6 +41,7 @@ exports.up = function (knex, Promise) {
                 .references("id")
                 .inTable("measurements");
             tbl.float("quantity").unsigned().notNullable();
+            tbl.primary(["recipe_id", "ingredient_id"]);
         });
 };
 
