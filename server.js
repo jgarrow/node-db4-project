@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 
 const server = express();
-const RecipeRoute = require("./routes/recipe_routes");
+const recipeRoutes = require("./routes/recipe_routes");
 const baseUrl = "/api";
 
+server.use(cors());
 server.use(express.json());
-server.use(baseUrl, RecipeRoute);
+server.use(baseUrl, recipeRoutes);
 
 module.exports = server;
