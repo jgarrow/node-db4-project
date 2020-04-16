@@ -45,8 +45,41 @@ function getInstructions(recipe_id) {
         .innerJoin("recipes", "recipes.id", "instructions.recipe_id");
 }
 
+function getIngredients() {
+    return db("ingredients");
+}
+
+function getAllRecipesWithSingleIngredient(ingredient_id) {
+    // SQL query
+    // select i.ingredient_name, r.recipe_name
+    // from recipe_ingredients as ri
+    // join ingredients as i
+    //     on i.id = ri.ingredient_id
+    // join recipes as r
+    //     on r.id = ri.recipe_id
+    // where i.id = 10 -- ingredient_id argument instead of `10`
+
+    // not sure how to select the entire `recipes` table from the bridge `recipe_ingredients` table instead of selecting each individual column
+    return db
+        .select(
+            "recipes.recipe_name",
+            "recipes.servings",
+            "recipes.total_cook_time_minutes"
+        )
+        .from("recipe_ingredients")
+        .where({ ingredient_id })
+        .innerJoin(
+            "ingredients",
+            "ingredients.id",
+            "recipe_ingredients.ingredient_id"
+        )
+        .innerJoin("recipes", "recipes.id", "recipe_ingredients.recipe_id");
+}
+
 module.exports = {
     getRecipes,
     getShoppingList,
     getInstructions,
+    getIngredients,
+    getAllRecipesWithSingleIngredient,
 };

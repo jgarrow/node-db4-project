@@ -31,4 +31,24 @@ router.get("/recipes/:id/instructions", (req, res) => {
         );
 });
 
+router.get("/ingredients", (req, res) => {
+    RecipeSchemes.getIngredients()
+        .then((ingredients) => res.status(200).json(ingredients))
+        .catch((err) =>
+            res.status(500).json({ message: "Error fetching ingredients" })
+        );
+});
+
+router.get("/ingredients/:id/recipes", (req, res) => {
+    const { id } = req.params;
+
+    RecipeSchemes.getAllRecipesWithSingleIngredient(id)
+        .then((recipes) => res.status(200).json(recipes))
+        .catch((err) =>
+            res.status(500).json({
+                message: `Error fetching recipes for ingredient ${id}`,
+            })
+        );
+});
+
 module.exports = router;
