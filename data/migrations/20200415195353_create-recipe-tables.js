@@ -18,7 +18,9 @@ exports.up = function (knex, Promise) {
                 .unsigned()
                 .notNullable()
                 .references("id")
-                .inTable("recipes");
+                .inTable("recipes")
+                .onUpdate("CASCADE")
+                .onDelete("CASCADE");
         })
         .createTable("measurements", (tbl) => {
             tbl.increments();
@@ -29,17 +31,23 @@ exports.up = function (knex, Promise) {
                 .unsigned()
                 .notNullable()
                 .references("id")
-                .inTable("recipes");
+                .inTable("recipes")
+                .onUpdate("CASCADE")
+                .onDelete("CASCADE");
             tbl.integer("ingredient_id")
                 .unsigned()
                 .notNullable()
                 .references("id")
-                .inTable("ingredients");
+                .inTable("ingredients")
+                .onUpdate("CASCADE")
+                .onDelete("CASCADE");
             tbl.integer("measurement_id")
                 .unsigned()
                 .notNullable()
                 .references("id")
-                .inTable("measurements");
+                .inTable("measurements")
+                .onUpdate("CASCADE")
+                .onDelete("CASCADE");
             tbl.float("quantity").unsigned().notNullable();
             tbl.primary(["recipe_id", "ingredient_id"]);
         });

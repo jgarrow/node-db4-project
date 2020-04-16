@@ -12,6 +12,7 @@ exports.seed = function (knex) {
                 { ingredient_name: "eggs" },
                 { ingredient_name: "butter" },
                 { ingredient_name: "chocolate chips" },
+
                 { ingredient_name: "penne pasta" },
                 { ingredient_name: "roma tomatoes" },
                 { ingredient_name: "garlic" },
@@ -19,6 +20,7 @@ exports.seed = function (knex) {
                 { ingredient_name: "parsley" },
                 { ingredient_name: "olive oil" },
                 { ingredient_name: "grated parmesan cheese" },
+
                 { ingredient_name: "bowtie pasta" },
                 { ingredient_name: "red onion" },
                 { ingredient_name: "spinach" },
@@ -26,6 +28,7 @@ exports.seed = function (knex) {
                 { ingredient_name: "yellow bell pepper" },
                 { ingredient_name: "chicken breast" },
                 { ingredient_name: "montreal chicken seasoning" },
+
                 { ingredient_name: "ground pork" },
                 { ingredient_name: "green beans" },
                 { ingredient_name: "soy sauce" },
